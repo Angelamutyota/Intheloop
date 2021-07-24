@@ -8,6 +8,8 @@ class NeighbourHood(models.Model):
     occupants_count =  models.IntegerField(null=True, blank=True)
     description = models.TextField()
     contact = models.IntegerField(null=True, blank=True)
+    health_department = models.IntegerField(null=True, blank=True)
+    police_autorities = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
             return f'{self.name} hood'
