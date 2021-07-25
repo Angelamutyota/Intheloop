@@ -20,4 +20,4 @@ class ProfileForm(forms.ModelForm):
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
         model = NeighbourHood
-        fields = ['']
+        fields = ['name','location', 'picture', 'decription', 'contact', 'health_department', 'police_authorities']

@@ -6,6 +6,7 @@ class NeighbourHood(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=60)
     occupants_count =  models.IntegerField(null=True, blank=True)
+    picture = models.ImageField(upload_to='images/', default='default.png')
     description = models.TextField()
     contact = models.IntegerField(null=True, blank=True)
     health_department = models.IntegerField(null=True, blank=True)
