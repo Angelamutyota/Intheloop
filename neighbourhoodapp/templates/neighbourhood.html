@@ -31,4 +31,27 @@
         </div>
         
     </div>
+    <div class="row">
+        <a href="{% url 'business' %}" class="btn btn-sm btn-outline-info mb-4 mr-4" >Add Business</a>  
+              
+        </div>
+    <h1>Neighbourhood Businesses</h1>
+    <div class="row">
+        {% for busines in business %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{busines.name}}
+                    </h5>
+                    <p class="card-text">{{busines.email}}</p>
+                    <p class="card-text">{{bususines.description}}</p>
+                    <p class="card-text">Owner: <small class="text-muted">
+                        {{ busines.user.user.username|title }}</small></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    
 {% endblock %}

@@ -102,7 +102,6 @@ def neighbourhood(request, hood_id):
         form = BusinessForm(request.POST)
         if form.is_valid():
             biz_form = form.save(commit=False)
-            biz_form.neighbourhood = hood
             biz_form.user = request.user.profile
             biz_form.save()
             return redirect('neighbourhood', hood_id)
@@ -116,16 +115,15 @@ def neighbourhood(request, hood_id):
     }
     return render(request, 'neighbourhood.html', params)
 
-def business(request, hood_id):
-    hood = NeighbourHood.objects.get(id=hood_id)
+def business(request):
+    hood = NeighbourHood.objects.all()
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
             biz_form = form.save(commit=False)
-            biz_form.neighbourhood = hood
             biz_form.user = request.user.profile
             biz_form.save()
-            return redirect('neighbourhood', hood_id)
+            return redirect('index',)
     else:
         form = BusinessForm()
-    return render(request, 'newbiz.html', {'form': form})
+    return render(request, 'newbiz.html', {'form': form, 'hood': hood})
