@@ -86,7 +86,7 @@ def update_profile(request):
             prof_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
             if prof_form.is_valid():
                 prof_form.save()
-                return redirect(request.path_info)
+                return redirect('profile')
     else:
         prof_form = ProfileForm(instance=request.user.profile)
         context = {
@@ -100,3 +100,32 @@ def neighbourhood(request, hood_id):
     posts = Post.objects.filter(hood=hood)
     if request.method == 'POST':
         form = BusinessForm(request.POST)
+        if form.is_valid():
+            biz_form = form.save(commit=False)
+            biz_form.neighbourhood = hood
+            biz_form.user = request.user.profile
+            biz_form.save()
+            return redirect('neighbourhood', hood_id)
+    else:
+        form = BusinessForm()
+    params = {
+        'hood': hood,
+        'business': business,
+        'form': form,
+        'posts': posts
+    }
+    return render(request, 'neighbourhood.html', params)
+
+def business(request, hood_id):
+    hood = NeighbourHood.objects.get(id=hood_id)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            biz_form = form.save(commit=False)
+            biz_form.neighbourhood = hood
+            biz_form.user = request.user.profile
+            biz_form.save()
+            return redirect('neighbourhood', hood_id)
+    else:
+        form = BusinessForm()
+    return render(request, 'newbiz.html', {'form': form})

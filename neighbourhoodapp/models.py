@@ -8,10 +8,9 @@ class NeighbourHood(models.Model):
     occupants_count =  models.IntegerField(null=True, blank=True)
     picture = models.ImageField(upload_to='images/', default='default.png')
     description = models.TextField()
-    contact = models.IntegerField(null=True, blank=True)
-    health_department = models.IntegerField(null=True, blank=True)
-    police_authorities = models.IntegerField(null=True, blank=True)
-
+    contact = models.CharField(max_length = 10,blank =True)
+    health_department = models.CharField(max_length = 10,blank =True)
+    police_authorities = models.CharField(max_length = 10,blank =True)
     def __str__(self):
             return f'{self.name} hood'
 

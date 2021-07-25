@@ -13,7 +13,8 @@ urlpatterns =[
     path('newhood/', views.create_hood, name='newhood'),
     path('profile/', views.profile, name= 'profile'),
     path('updateprofile/', views.update_profile, name= 'updateprofile'),
-
+    path('neighbourhood/<hood_id>', views.neighbourhood, name='neighbourhood'),
+    path('business/<hood_id>', views.business, name='business'),
 
 ]
 if settings.DEBUG:
