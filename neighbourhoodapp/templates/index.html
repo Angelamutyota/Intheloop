@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 
 {%block content%}
-{%%endblock}
+<div class="container">
+    <h1> Neighbourhoods</h1>
+    {% for hood in hoods %}
+    <img src="{{hood.picture.url}}" alt="" width="200px">
+    <p>{{hood.name}}</p>
+    <p>{{hood.location}}</p>
+{%endfor%}
+</div>
+
+
+{%endblock%}

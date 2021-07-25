@@ -10,7 +10,7 @@ class NeighbourHood(models.Model):
     description = models.TextField()
     contact = models.IntegerField(null=True, blank=True)
     health_department = models.IntegerField(null=True, blank=True)
-    police_autorities = models.IntegerField(null=True, blank=True)
+    police_authorities = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
             return f'{self.name} hood'
