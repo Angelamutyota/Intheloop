@@ -11,6 +11,10 @@ urlpatterns =[
 
     path('',views.index, name = 'index'),
     path('newhood/', views.create_hood, name='newhood'),
+    path('profile/', views.profile, name= 'profile'),
+    path('updateprofile/', views.update_profile, name= 'updateprofile'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
