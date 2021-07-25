@@ -115,15 +115,15 @@ def neighbourhood(request, hood_id):
     }
     return render(request, 'neighbourhood.html', params)
 
-def business(request):
-    hood = NeighbourHood.objects.all()
+def business(request,hood_id):
+    hood = NeighbourHood.objects.get(id= hood_id)
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         if form.is_valid():
             biz_form = form.save(commit=False)
             biz_form.user = request.user.profile
             biz_form.save()
-            return redirect('index',)
+            return redirect('neighbourhood', hood_id)
     else:
         form = BusinessForm()
     return render(request, 'newbiz.html', {'form': form, 'hood': hood})

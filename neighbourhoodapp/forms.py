@@ -26,3 +26,8 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         fields = ['name', 'description', 'neighbourhood', 'email']
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'date', 'post', 'hood']
