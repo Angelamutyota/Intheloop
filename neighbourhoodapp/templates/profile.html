@@ -20,15 +20,15 @@
                                     data-target=".bd-example-modal-md "><strong>Edit Profile</strong></a>
                             </div>
                             <p class="text-secondary"> <b>Bio:</b> {{ user.profile.bio }}</p>
-                            <p class="text-secondary"> <b>Contact:</b> {{ user.profile.contact }}</p>
+                            <p class="text-secondary"> <b>Email:</b> {{ user.profile.email }}</p>
                             <p class="text-secondary"> <b>Neighbourhood:</b> {{ user.profile.neighbourhood }}</p>
-
+                            <p class="text-secondary"> <b>Location :</b> {{ user.profile.location }}</p>
+                            <button class="btn btn-info"><a href="{% url 'updateprofile' %}">update profile</a></button>
                         </div>
                     </div>
                 </div>
             </div>
             </div>
-           <button class="btn btn-info"><a href="{% url 'updateprofile' %}">update profile</a></button>
         </div>
         
     </div>

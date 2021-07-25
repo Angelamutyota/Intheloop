@@ -77,6 +77,10 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 def update_profile(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
     if request.method == 'POST':
             prof_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
             if prof_form.is_valid():
