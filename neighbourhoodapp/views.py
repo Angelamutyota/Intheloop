@@ -1,8 +1,9 @@
-from neighbourhoodapp.models import NeighbourHood, Profile
+from django import forms
+from neighbourhoodapp.models import Business, NeighbourHood, Post, Profile
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http  import HttpResponse
 from django.shortcuts import render
-from .forms import NeighbourHoodForm, CreateUserForm, ProfileForm
+from .forms import BusinessForm, NeighbourHoodForm, CreateUserForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -92,3 +93,10 @@ def update_profile(request):
             'prof_form': prof_form,
         }
     return render(request, 'updateprofile.html', context)
+
+def neighbourhood(request, hood_id):
+    hood = NeighbourHood.objects.get(id=hood_id)
+    business = Business.objects.filter(neighbourhood=hood)
+    posts = Post.objects.filter(hood=hood)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
