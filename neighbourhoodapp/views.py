@@ -13,7 +13,7 @@ def index(request):
     hoods = NeighbourHood.objects.all()
     return render(request, 'index.html', {'hoods': hoods})
 
-
+@login_required(login_url='loginpage')
 def create_hood(request):
     if request.method == 'POST':
         form = NeighbourHoodForm(request.POST, request.FILES)
