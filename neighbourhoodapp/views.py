@@ -57,6 +57,7 @@ def logoutpage(request):
     logout(request)
     return redirect('loginpage')
 
+@login_required(login_url='loginpage')
 def profile(request):
     try:
         profile = request.user.profile
@@ -77,6 +78,7 @@ def profile(request):
     }
     return render(request, 'profile.html', context)
 
+@login_required(login_url='loginpage')
 def update_profile(request):
     try:
         profile = request.user.profile
@@ -94,6 +96,7 @@ def update_profile(request):
         }
     return render(request, 'updateprofile.html', context)
 
+@login_required(login_url='loginpage')
 def neighbourhood(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
     business = Business.objects.filter(neighbourhood=hood)
@@ -115,6 +118,7 @@ def neighbourhood(request, hood_id):
     }
     return render(request, 'neighbourhood.html', params)
 
+@login_required(login_url='loginpage')
 def business(request,hood_id):
     hood = NeighbourHood.objects.get(id= hood_id)
     if request.method == 'POST':
@@ -128,6 +132,7 @@ def business(request,hood_id):
         form = BusinessForm()
     return render(request, 'newbiz.html', {'form': form, 'hood': hood})
 
+@login_required(login_url='loginpage')
 def post(request,hood_id):
     hood = NeighbourHood.objects.get(id= hood_id)
     if request.method == 'POST':
