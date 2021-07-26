@@ -5,7 +5,7 @@
 >[Angela-Mutyota] 
 
 ##  Live Link 
- Click ()  to visit the site
+ Click (https://inthel00p.herokuapp.com/)  to visit the site
   
 # Description
 This is a Django web application that allows its users to be in the loop about everything happening within the neighbourhood. Users are able to join a neighbourhood and can receive all the information they need such as businesses in the neighbourhood, posts by other members and contact information for the administration, health department and police.
