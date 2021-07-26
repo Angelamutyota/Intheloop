@@ -18,3 +18,55 @@ This is a Django web application that allows its users to be in the loop about e
 * a user can post their business or make posts in their neighbourhood
 * user can see the businesses and posts from their neighbourhood
 * a user can view details of any neighbourhood
+
+## Setup and Installation  
+To get the project .......  
+  
+##### Cloning the repository:  
+ ```bash 
+https://github.com/Angelamutyota/intheloop.git
+```
+##### Navigate into the folder and install requirements  
+ ```bash 
+cd Picture-Globe pip install -r requirements.txt 
+```
+##### Install and activate Virtual  
+ ```bash 
+- python3 -m venv virtual - source virtual/bin/activate  
+```  
+##### Install Dependencies  
+ ```bash 
+ pip install -r requirements.txt 
+```  
+ ##### Setup Database  
+  SetUp your database User,Password, Host then make migrate  
+ ```bash 
+python manage.py makemigrations neighbourhoodapp 
+ ``` 
+ Now Migrate  
+ ```bash 
+ python manage.py migrate 
+``` 
+##### Creating a super user
+ ```bash
+ python manage.py createsuperuser
+ ``` 
+
+##### Running the application  
+ ```bash 
+ python manage.py server 
+```
+##### Testing the application  
+ ```bash 
+ python manage.py test 
+```
+Open the application on your browser `127.0.0.1:8000`.  
+  
+  
+## Technology used  
+  
+* [Python3.8]
+* [Django3.2.5] 
+* [Heroku]  
+  
+  
