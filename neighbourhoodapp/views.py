@@ -148,11 +148,12 @@ def search_results(request):
         searched_business = Business.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"businesses": searched_business})
+        return render(request, 'search.html',{"message":message, "businesses": searched_business, 'search': search_term})
 
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
 
 def join_hood(request, hood_id):
     neighbourhood = get_object_or_404(NeighbourHood, id=hood_id)
