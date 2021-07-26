@@ -9,9 +9,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{%url 'newhood'%}">Add Neighbourhood</a>  
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               My Profile
@@ -23,9 +23,9 @@
         </li>
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" role="search" action="{% url 'search_results' %}">
+        <input class="form-control me-2" type="search" placeholder="Search business" aria-label="Search">
+        <button class="btn btn-outline-success"  type="submit">Search</button>
       </form>
     </div>
   </div>

@@ -48,6 +48,12 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
 
+    @classmethod
+    def search_by_name(cls,search_term):
+        biz = cls.objects.filter(title__icontains=search_term)
+        return biz
+
+
 class Post(models.Model):
     title = models.CharField(max_length=120, null=True)
     post = models.TextField()

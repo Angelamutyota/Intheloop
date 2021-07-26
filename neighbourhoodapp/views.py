@@ -140,3 +140,29 @@ def post(request,hood_id):
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form, 'hood': hood})
+
+def search_results(request):
+
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_business = Business.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"businesses": searched_business})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+
+def join_hood(request, hood_id):
+    neighbourhood = get_object_or_404(NeighbourHood, id=hood_id)
+    request.user.profile.neighbourhood = neighbourhood
+    request.user.profile.save()
+    return redirect('neighbourhood', hood_id)
+
+
+def leave_hood(request, hood_id):
+    hood = get_object_or_404(NeighbourHood, id=hood_id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('neighbourhood', hood_id)

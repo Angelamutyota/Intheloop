@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content%}
+<body style="background-image: url(https://www.nicepng.com/png/detail/39-399799_downtown-skyscraper-panoramic-skyline-real-estate-background.png); background-repeat: no-repeat; background-size: 100% 100%;">
+
 <div class="container" style="margin-top:8%">
     <div class="content-section">
         <div class="media">
@@ -22,6 +24,8 @@
                             <p class="text-secondary"> <b>About Us :</b> {{ hood.description }}</p>
                             <p class="text-secondary"> <b>police emergency No :</b> {{ hood.health_department }}</p>
                             <p class="text-secondary"> <b>Hospital emergency No :</b> {{ hood.police_authorities }}</p>
+                            <button class="btn btn-info"><a href="{% url 'join-hood' hood.id %}">join hood</a></button>
+                            <button class="btn btn-info"><a href="{% url 'leave-hood' hood.id %}">leave hood</a></button>
 
                         </div>
                     </div>
@@ -72,5 +76,6 @@
         {% endfor %}
     </div>
 </div>
-    
+
+</body>
 {% endblock %}

@@ -1,14 +1,44 @@
 {% extends 'base.html' %}
 
 {%block content%}
+<body style="background-image: url(https://www.nicepng.com/png/detail/39-399799_downtown-skyscraper-panoramic-skyline-real-estate-background.png); background-repeat: no-repeat; background-size: 100% 100%;">
+    
 <div class="container">
     <h1> Neighbourhoods</h1>
+    <div class="row">
     {% for hood in hoods %}
-    <img src="{{hood.picture.url}}" alt="" width="200px">
-    <p>{{hood.name}}</p>
-    <p>{{hood.location}}</p>
-{%endfor%}
+    <div class="col-md-4">
+        <div class="card mb-4">
+         <img src="{{hood.picture.url}}" class="card-img-top" alt="" width="200px" height="250px">
+         <div class="card-body">
+          <button class="btn btn-info"><a href="{% url 'neighbourhood' hood.id %}">view hood</a></button>
+         <p class="card-title">{{hood.name}}, {{hood.location}}</p>
+          <p class="card-text">{{hood.description}}</p>
+        </div>
+     </div>
+   </div>
+  {%endfor%}
+ </div>
 </div>
+</body>
 
 
 {%endblock%}
+
+<div class="row">
+    {% for busines in business %}
+    <h1>Neighbourhood Businesses</h1>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{busines.name}}
+                </h5>
+                <p class="card-text">{{busines.email}}</p>
+                <p class="card-text">{{bususines.description}}</p>
+                <p class="card-text">Owner: <small class="text-muted">
+                    {{ busines.user.user.username|title }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
