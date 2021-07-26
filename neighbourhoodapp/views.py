@@ -3,7 +3,7 @@ from neighbourhoodapp.models import Business, NeighbourHood, Post, Profile
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http  import HttpResponse
 from django.shortcuts import render
-from .forms import BusinessForm, NeighbourHoodForm, CreateUserForm, ProfileForm
+from .forms import BusinessForm, NeighbourHoodForm, CreateUserForm, PostForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -127,3 +127,16 @@ def business(request,hood_id):
     else:
         form = BusinessForm()
     return render(request, 'newbiz.html', {'form': form, 'hood': hood})
+
+def post(request,hood_id):
+    hood = NeighbourHood.objects.get(id= hood_id)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post_form = form.save(commit=False)
+            post_form.user = request.user.profile
+            post_form.save()
+            return redirect('neighbourhood', hood_id)
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'form': form, 'hood': hood})

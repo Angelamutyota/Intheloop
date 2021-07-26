@@ -15,6 +15,7 @@ urlpatterns =[
     path('updateprofile/', views.update_profile, name= 'updateprofile'),
     path('neighbourhood/<hood_id>', views.neighbourhood, name='neighbourhood'),
     path('business/<hood_id>', views.business, name='business'),
+    path('post/<hood_id>', views.post, name='post'),
 
 ]
 if settings.DEBUG:
