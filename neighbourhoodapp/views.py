@@ -146,6 +146,7 @@ def post(request,hood_id):
         form = PostForm()
     return render(request, 'post.html', {'form': form, 'hood': hood})
 
+@login_required(login_url='loginpage')
 def search_results(request):
 
     if 'business' in request.GET and request.GET["business"]:
@@ -159,14 +160,14 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
 
-
+@login_required(login_url='loginpage')
 def join_hood(request, hood_id):
     neighbourhood = get_object_or_404(NeighbourHood, id=hood_id)
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
     return redirect('neighbourhood', hood_id)
 
-
+@login_required(login_url='loginpage')
 def leave_hood(request, hood_id):
     hood = get_object_or_404(NeighbourHood, id=hood_id)
     request.user.profile.neighbourhood = None
